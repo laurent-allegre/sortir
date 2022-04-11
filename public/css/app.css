@@ -1,0 +1,48 @@
+body {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    font-family: 'Asul', sans-serif;
+    background-color: aliceblue;
+}
+main h2 {
+    margin-top: 0;
+}
+.container {
+    max-width: 800px;
+    margin: auto;
+    padding: 0 10px;
+}
+header {
+    background-color: #B0413E;
+    padding: 1rem 0;
+}
+header h1 {
+    margin: 0 0 10px 0;
+}
+header a {
+    text-decoration: none;
+    color: black;
+    padding: 4px;
+}
+.header-nav a {
+    margin-right: 2rem;
+
+
+}
+
+header nav a:hover {
+    text-decoration: underline;
+}
+.header-logo {
+    font-size: 3rem;
+    font-weight: normal;
+}
+.header-logo img {
+    max-width: 42px;
+    margin-right: 5px;
+}
+.header-nav {
+    display: flex;
+}
