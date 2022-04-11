@@ -33,5 +33,11 @@
             </nav>
         </div>
     </header>
+    {# contenu principal de chaque page #}
+    <main>
+        <div class="container">
+            {% block body %}{% endblock %}
+        </div>
+    </main>
     </body>
 </html>
