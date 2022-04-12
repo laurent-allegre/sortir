@@ -27,11 +27,11 @@ class ProfilController extends AbstractController
         if ($profilForm->isSubmitted()) {
             $entityManager->persist($profil);
             $entityManager->flush();
-            //return $this->redirectToRoute('profil/index.html.twig', ['id' => $profil->getId()]);
+            //return $this->redirectToRoute('profil/profil.html.twig', ['id' => $profil->getId()]);
         }
 
 
-        return $this->render('profil/index.html.twig', [
+        return $this->render('profil.html.twig', [
             'profilForm' => $profilForm->createView()
         ]);
     }

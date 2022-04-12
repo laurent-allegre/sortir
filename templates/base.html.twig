@@ -22,12 +22,13 @@
         <div class="container">
             <h1 class="header-logo">
                 <a href="{{ path('index') }}" title="Go back to homepage">
-                    <img src="{{ asset('img/ENIEcole.jpg') }}" alt="Tp de Démo">Sortir.com
+                    <img src="{{ asset('img/ENIEcole.jpg') }}" alt="Tp Symfony">Sortir.com
                 </a>
             </h1>
             <nav class="header-nav">
-                <a href="" title="Go back to homepage">Accueil</a>
-                <a href="" title="All things to do">Liste des Sorties</a>
+                <a href="{{ path('index') }}" title="lien vers l'accueil du site">Accueil</a>
+                <a href="" title="liste des sorties">Liste des Sorties</a>
+                <a href="{{ path('app_profil') }}" title="Mon profil">Mon Profil</a>
 
 
             </nav>
