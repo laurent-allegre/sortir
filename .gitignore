@@ -8,7 +8,8 @@
 /var/
 /vendor/
 /public/.htaccess
-composer.lock
+/.composer.lock
+/composer.json
 
 ###< symfony/framework-bundle ###
 
