@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\SortieRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -51,6 +53,40 @@ class Sortie
      * @ORM\Column(type="string", length=255)
      */
     private $etat;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Lieu::class, inversedBy="sorties")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $lieux;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Etat::class, inversedBy="sorties")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $etats;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Campus::class, inversedBy="sorties")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $camps;
+
+    /**
+     * @ORM\ManyToMany(targetEntity=Participant::class, mappedBy="inscrit")
+     */
+    private $participants;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Participant::class, inversedBy="sorties")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $organise;
+
+    public function __construct()
+    {
+        $this->participants = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -137,6 +173,81 @@ class Sortie
     public function setEtat(string $etat): self
     {
         $this->etat = $etat;
+
+        return $this;
+    }
+
+    public function getLieux(): ?Lieu
+    {
+        return $this->lieux;
+    }
+
+    public function setLieux(?Lieu $lieux): self
+    {
+        $this->lieux = $lieux;
+
+        return $this;
+    }
+
+    public function getEtats(): ?Etat
+    {
+        return $this->etats;
+    }
+
+    public function setEtats(?Etat $etats): self
+    {
+        $this->etats = $etats;
+
+        return $this;
+    }
+
+    public function getCamps(): ?Campus
+    {
+        return $this->camps;
+    }
+
+    public function setCamps(?Campus $camps): self
+    {
+        $this->camps = $camps;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Participant>
+     */
+    public function getParticipants(): Collection
+    {
+        return $this->participants;
+    }
+
+    public function addParticipant(Participant $participant): self
+    {
+        if (!$this->participants->contains($participant)) {
+            $this->participants[] = $participant;
+            $participant->addInscrit($this);
+        }
+
+        return $this;
+    }
+
+    public function removeParticipant(Participant $participant): self
+    {
+        if ($this->participants->removeElement($participant)) {
+            $participant->removeInscrit($this);
+        }
+
+        return $this;
+    }
+
+    public function getOrganise(): ?Participant
+    {
+        return $this->organise;
+    }
+
+    public function setOrganise(?Participant $organise): self
+    {
+        $this->organise = $organise;
 
         return $this;
     }
