@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}index sortir.com{% endblock %}
+
+{% block body %}
+    <h1>Mon profil</h1>
+    {{ form_start(profilForm)}}
+    {{ form_widget(profilForm) }}
+    <button>Enregistrer</button>
+    <button>Annuler</button>
+    {{ form_end(profilForm)}}
+
+{% endblock %}
