@@ -7,6 +7,9 @@
 /public/bundles/
 /var/
 /vendor/
+/public/.htaccess
+composer.lock
+
 ###< symfony/framework-bundle ###
 
 ###> symfony/phpunit-bridge ###
@@ -19,4 +22,5 @@
 .phpunit.result.cache
 ###< phpunit/phpunit ###
 /.idea/
-/public/.htaccess
+/public/.htaccess/
+
