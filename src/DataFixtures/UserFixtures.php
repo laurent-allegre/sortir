@@ -2,6 +2,7 @@
 
 namespace App\DataFixtures;
 
+use App\Entity\Etat;
 use App\Entity\Participant;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
@@ -30,6 +31,7 @@ class UserFixtures extends Fixture
 
         // Génère 20 participants
         for ($i = 0; $i < 20; $i++) {
+
             $participant = new Participant();
             $participant->setEmail($faker->email());
             $participant->setNom($faker->firstName());
