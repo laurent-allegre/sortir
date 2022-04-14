@@ -11,6 +11,8 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\PasswordHasher\Hasher\CheckPasswordLengthTrait;
+use Symfony\Component\PropertyAccess\PropertyPathInterface;
+use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 
 
 class ProfilType extends AbstractType
@@ -24,7 +26,7 @@ class ProfilType extends AbstractType
             ->add('telephone')
             ->add('email')
             ->add('password')
-            //->add('confirmation')
+           // ->add('confirmation',TextType::class, [‘mapped’ =>false])
             ->add('avatar');
 
 

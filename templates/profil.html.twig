@@ -1,12 +1,50 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Mon profil</h1>
+    <h1>Mon profil {{ app.user.id }}</h1>
     {{ form_start(profilForm)}}
-    {{ form_widget(profilForm) }}
+
+    <div><label for="{{ field_name(profilForm.pseudo) }}">Pseudo
+        <input type="text"
+               value="{{ field_value(profilForm.pseudo) }}"
+               placeholder="{{ app.user.pseudo }}">
+    </label></div>
+    <div><label for="{{ field_name(profilForm.nom) }}">Nom
+        <input type="text"
+           value="{{ field_value(profilForm.nom) }}"
+           placeholder="{{ app.user.nom }}">
+    </label></div>
+    <div><label for="{{ field_name(profilForm.prenom) }}">Prénom:
+        <input type="text"
+               value="{{ field_value(profilForm.prenom) }}"
+               placeholder="{{ app.user.prenom }}">
+    </label></div>
+    <div><label for="{{ field_name(profilForm.telephone) }}">Téléphone:
+        <input type="text"
+               value="{{ field_value(profilForm.telephone) }}"
+               placeholder="{{ app.user.telephone }}">
+    </label></div>
+    <div><label for="{{ field_name(profilForm.email) }}">Email:
+        <input type="text"
+               value="{{ field_value(profilForm.email) }}"
+               placeholder="{{ app.user.email }}">
+    </label></div>
+    <div><label for="{{ field_name(profilForm.password) }}">Mot de passe:
+        <input type="text"
+               value="{{ field_value(profilForm.password) }}">
+    </label></div>
+    <div><label>Confiramtion:
+        <input type="text"></label></div>
+    <div><label for="{{ field_name(profilForm.avatar) }}">Photo:
+    <input type="file"
+           value="{{ field_value(profilForm.avatar) }}"
+           placeholder="{{ app.user.avatar }}">
+    </label></div>
     <button>Enregistrer</button>
     <button>Annuler</button>
     {{ form_end(profilForm)}}
+
+
 {% endblock %}
 
 {% block title %}
