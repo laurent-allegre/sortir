@@ -9,6 +9,7 @@ use App\Entity\Sortie;
 use App\Entity\Ville;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -18,30 +19,49 @@ class SortieType extends AbstractType
     {
         $builder
             ->add('nom')
-            ->add('dateHeureDebut')
+            ->add('dateHeureDebut', DateType::class,[
+                'html5' => true,
+                'widget'=>'single_text',
+            ])
             ->add('duree')
-            ->add('dateLimiteInscription')
+            ->add('dateLimiteInscription', DateType::class,[
+                 'html5' => true,
+                 'widget'=>'single_text',
+            ])
             ->add('nbInscriptionMax')
             ->add('infosSortie')
 
             ->add('lieux', EntityType::class,[
                 'class' => Lieu::class,
-                'choice_label'=> 'nom'
+                'choice_label'=> 'nom',
             ])
             ->add('etats', EntityType::class,[
                 'class' => Etat::class,
                 'choice_label' => 'libelle'
             ])
             ->add('camps',EntityType::class,[
+                'label' => 'Campus',
                 'class' => Campus::class,
                 'choice_label'=> 'nom'
             ])
+            ->add('ville', EntityType::class,[
+                'mapped'=> false,
+                'class' => Ville::class,
+                'choice_label' => 'nom'
+            ])
+            ->add('latitude', EntityType::class,[
+                'mapped' => false,
+                'class' => Lieu::class,
+                'choice_label'=> 'latitude',
+            ])
+            ->add('longitude', EntityType::class,[
+                'mapped' => false,
+                'class' => Lieu::class,
+                'choice_label'=> 'longitude',
+            ])
+
           //  ->add('participants')
           //  ->add('organise')
-          ->add('nom', EntityType::class,[
-              'class' => Ville::class,
-              'choice_label' => 'nom'
-          ])
 
         ;
     }
