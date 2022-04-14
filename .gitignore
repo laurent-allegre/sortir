@@ -22,5 +22,4 @@
 .phpunit.result.cache
 ###< phpunit/phpunit ###
 /.idea/
-/public/.htaccess/
 

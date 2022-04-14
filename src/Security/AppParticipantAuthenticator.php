@@ -48,14 +48,15 @@ class AppParticipantAuthenticator extends AbstractLoginFormAuthenticator
         if ($targetPath = $this->getTargetPath($request->getSession(), $firewallName)) {
             return new RedirectResponse($targetPath);
         }
-
         return new RedirectResponse($this->urlGenerator->generate('app_profil'));
+
     }
 
     protected function getLoginUrl(Request $request): string
     {
         return $this->urlGenerator->generate(self::LOGIN_ROUTE);
     }
+
     public function supports(Request $request) : bool
     {
         return self::LOGIN_ROUTE === $request->attributes->get('_route')

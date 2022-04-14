@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    {{ form_start(sortieForm) }}
+    <div class="container">
+        <div class="row mt-5">
+            <div class="col-6">{{ form_row(sortieForm.nom) }}</div>
+            <div class="col-6">{{ form_row(sortieForm.camps) }}</div>
+        </div>
+        <div class="row mt-2">
+            <div class="col-6">{{ form_row(sortieForm.dateHeureDebut) }}</div>
+            <div class="col-6"></div>
+        </div>
+        <div class="row mt-2">
+            <div class="col-6">{{ form_row(sortieForm.dateLimiteInscription) }}</div>
+            <div class="col-6">{{ form_row(sortieForm.lieux) }}</div>
+        </div>
+        <div class="row mt-2">
+            <div class="col-6">{{ form_row(sortieForm.nbInscriptionMax) }}</div>
+            <div class="col-6"></div>
+        </div>
+        <div class="row mt-2">
+            <div class="col-6">{{ form_row(sortieForm.infosSortie) }}</div>
+            <div class="col-6">{{ form_row(sortieForm.duree) }}</div>
+        </div>
+        <div class="row mt-2">
+            <div class="col-6">{{ form_row(sortieForm.etats) }}</div>
+            <div class="col-6"></div>
+        </div>
+
+        <button>Nouvelle sortie</button>
+    </div>
+
+
+    {{ form_end(sortieForm) }}
+{% endblock %}
+
+{% block title %}
+    Création d'une nouvelle sortie
+{% endblock %}
+
