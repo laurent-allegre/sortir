@@ -2,7 +2,8 @@
 
 namespace App\Controller;
 
-use App\Entity\Lieu;
+
+
 use App\Entity\Sortie;
 use App\Form\SortieType;
 use Doctrine\ORM\EntityManagerInterface;
@@ -18,11 +19,14 @@ class SortirController extends AbstractController
      */
     public function create(Request $request, EntityManagerInterface $entityManager): Response
     {
+
        $sortie = new Sortie();
        $sortieForm = $this->createForm(SortieType::class, $sortie);
 
        $sortieForm->handleRequest($request);
        if ($sortieForm->isSubmitted() && $sortieForm->isValid()){
+           //organisateur
+           $sortie->setOrganise($this->getUser());
            $entityManager->persist($sortie);
            $entityManager->flush();
        }
