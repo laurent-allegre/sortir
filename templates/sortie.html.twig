@@ -6,33 +6,49 @@
     {{ form_start(sortieForm) }}
     <div class="container">
         <div class="row mt-5">
-            <div class="col-6">{{ form_row(sortieForm.nom) }}</div>
-            <div class="col-6">{{ form_row(sortieForm.camps) }}</div>
+            <div class="col-2">{{ form_label(sortieForm.nom,'Nom de la sortie:') }}</div>
+            <div class="col-4">{{ form_widget(sortieForm.nom) }}</div>
+            <div class="col-2">{{ form_label(sortieForm.camps,'Campus:') }}</div>
+            <div class="col-4">{{ form_widget(sortieForm.camps) }}</div>
         </div>
-        <div class="row mt-2">
-            <div class="col-6">{{ form_row(sortieForm.dateHeureDebut) }}</div>
-            <div class="col-6">{{ form_row(sortieForm.ville) }}</div>
+        <div class="row mt-3">
+            <div class="col-2">{{ form_label(sortieForm.dateHeureDebut,'Date et heure de la sortie:') }}</div>
+            <div class="col-4">{{ form_widget(sortieForm.dateHeureDebut) }}</div>
+            <div class="col-2">{{ form_label(sortieForm.ville,'ville', {'label_attr': {'class': 'label-afficheSortie:'}}) }}</div>
+            <div class="col-4">{{ form_widget(sortieForm.ville) }}</div>
         </div>
-        <div class="row mt-2">
-            <div class="col-6">{{ form_row(sortieForm.dateLimiteInscription) }}</div>
-            <div class="col-6">{{ form_row(sortieForm.lieux) }}</div>
+        <div class="row mt-3">
+            <div class="col-2">{{ form_label(sortieForm.dateLimiteInscription,"Date limite d'inscription:") }}</div>
+            <div class="col-4">{{ form_widget(sortieForm.dateLimiteInscription) }}</div>
+            <div class="col-2">{{ form_label(sortieForm.lieux,"Lieu:") }}</div>
+            <div class="col-4">{{ form_widget(sortieForm.lieux) }}</div>
         </div>
-        <div class="row mt-2">
-            <div class="col-6">{{ form_row(sortieForm.nbInscriptionMax) }}</div>
+        <div class="row mt-3">
+            <div class="col-2">{{ form_label(sortieForm.nbInscriptionMax,"Nombre de places:") }}</div>
+            <div class="col-4">{{ form_widget(sortieForm.nbInscriptionMax) }}</div>
             <div class="col-6"></div>
         </div>
-        <div class="row mt-2">
-            <div class="col-6">{{ form_row(sortieForm.infosSortie) }}</div>
-            <div class="col-6">{{ form_row(sortieForm.duree) }}</div>
+        <div class="row mt-3">
+            <div class="col-2">{{ form_label(sortieForm.infosSortie,"Description et infos:") }}</div>
+            <div class="col-4">{{ form_widget(sortieForm.infosSortie) }}</div>
+            <div class="col-2">{{ form_label(sortieForm.duree,"Durée:") }}</div>
+            <div class="col-4">{{ form_widget(sortieForm.duree) }}</div>
         </div>
         <div class="row mt-2">
-            <div class="col-6">{{ form_row(sortieForm.etats) }}</div>
-            <div class="col-6">{{ form_row(sortieForm.longitude) }} {{ form_row(sortieForm.latitude) }}</div>
+            <div class="col-2">{{ form_label(sortieForm.etats,"Etats:") }}</div>
+            <div class="col-4">{{ form_widget(sortieForm.etats) }}</div>
+            <div class="col-2">{{ form_label(sortieForm.infosSortie,"Longitude:") }}</div>
+            <div class="col-4">{{ form_widget(sortieForm.longitude) }}</div>
         </div>
-        <div>
-            <button class="mt-5">Nouvelle sortie</button>
-            <button class="mt-5">Publier sortie</button>
-            <button class="mt-5">Annuler sortie</button>
+        <div class="row mt-2">
+            <div class="col-6"></div>
+            <div class="col-2">{{ form_label(sortieForm.infosSortie,"latitude:") }}</div>
+            <div class="col-4">{{ form_widget(sortieForm.latitude) }}</div>
+        </div>
+        <div class="text-center">
+            <button class="mt-5 btn btn-success btn-lg">Nouvelle sortie</button>
+            <button class="mt-5 btn btn-info btn-lg">Publier sortie</button>
+            <button class="mt-5 btn btn-danger btn-lg">Annuler sortie</button>
         </div>
 
     </div>
