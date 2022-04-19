@@ -24,7 +24,7 @@ class Etat
     /**
      * @Assert\NotBlank(message="merci de donner un libellé à L'état")
      * @Assert\Length(max=255)
-     * @Assert\Choice(choices={"Créée", "Ouverte", "Clôturée", "Activité en cours", "Passée", "Annuler")
+     * @Assert\Choice(choices={"Créée", "Ouverte", "Clôturée", "Activité en cours", "Passée", "Annuler"})
      * @ORM\Column(type="string", length=255)
      */
     private $libelle;
