@@ -28,10 +28,11 @@ class SortirController extends AbstractController
 
        $sortieForm->handleRequest($request);
        if ($sortieForm->isSubmitted() && $sortieForm->isValid()){
-           if (!$sortie->getId()){
+
                //organisateur
                $sortie->setOrganise($this->getUser());
-           }
+
+
 
            $entityManager->persist($sortie);
            $entityManager->flush();
