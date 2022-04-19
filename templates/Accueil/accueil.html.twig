@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{% endblock %}
+
+{% block body %}
+    <h2 class="mt-2 text-center">Filtrer sortie</h2>
+    <form>
+
+    </form>
+    <div>
+    <table class="table table-striped">
+    <thead>
+    <tr>
+        <th scope="col">Nom de la sortie</th>
+        <th scope="col">Date de la sortie</th>
+        <th scope="col">Clôture</th>
+        <th scope="col">inscrits/places</th>
+        <th scope="col">Etat</th>
+        <th scope="col">Inscrit</th>
+        <th scope="col">Organisaeur</th>
+        <th scope="col">Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for sortie in sorties %}
+    <tr>
+        <th scope="row"></th>
+        <td>{{ sortie.nom }}</td>
+
+
+    </tr>
+    {%  endfor %}
+
+    </tbody>
+    </table>
+    </div>
+
+{% endblock %}

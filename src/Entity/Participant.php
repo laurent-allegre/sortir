@@ -8,6 +8,7 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=ParticipantRepository::class)
@@ -22,6 +23,7 @@ class Participant implements UserInterface, PasswordAuthenticatedUserInterface
     private $id;
 
     /**
+     * @Assert\NotBlank(message="Saisissez votre email!")
      * @ORM\Column(type="string", length=180, unique=true)
      */
     private $email;
@@ -32,27 +34,36 @@ class Participant implements UserInterface, PasswordAuthenticatedUserInterface
     private $roles = [];
 
     /**
+     * @Assert\NotBlank(message="Saisissez votre mot de passe!")
      * @var string The hashed password
      * @ORM\Column(type="string")
+     *  @Assert\Length(max=100, min=6)
      */
     private $password;
 
     /**
+     * @Assert\NotBlank(message="Saisissez votre pseudo!")
      * @ORM\Column(type="string", length=50, unique=true)
+     *  @Assert\Length(max=255, min=2)
      */
     private $pseudo;
 
     /**
+     * @Assert\NotBlank(message="Saisissez votre nom!")
      * @ORM\Column(type="string", length=255)
+     *  @Assert\Length(max=255, min=2)
      */
     private $nom;
 
     /**
+     * @Assert\NotBlank(message="Saisissez votre prénom!")
      * @ORM\Column(type="string", length=255)
+     *  @Assert\Length(max=255, min=2)
      */
     private $prenom;
 
     /**
+     * @Assert\NotBlank(message="Saisissez votre numéro de téléphone!")
      * @ORM\Column(type="string", length=50)
      */
     private $telephone;
