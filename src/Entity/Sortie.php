@@ -6,6 +6,7 @@ use App\Repository\SortieRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=SortieRepository::class)
@@ -20,27 +21,46 @@ class Sortie
     private $id;
 
     /**
+     * @Assert\NotBlank(message="Veuillez donner un nom à votre sortie")
+     * @Assert\Length(max=255)
      * @ORM\Column(type="string", length=255)
+     *
      */
     private $nom;
 
     /**
      * @ORM\Column(type="datetime")
+     * @Assert\NotBlank(message="Veuillez entrer une date ")
+     * @Assert\GreaterThanOrEqual(
+     *     "now",
+     *     message = "La date de début de la sortie ne doit pas être passée."
+     *      )
      */
     private $dateHeureDebut;
 
     /**
      * @ORM\Column(type="integer")
+     * @Assert\Positive (message = "La durée doit être positive.")
+     * @Assert\NotBlank(message="veuillez entrer la durée de la sortie")
      */
     private $duree;
 
     /**
-     * @ORM\Column(type="date")
+     * @ORM\Column(type="datetime")
+     * @Assert\Range(
+     *      min = "now",
+     *      maxPropertyPath="dateHeureDebut",
+     *      notInRangeMessage = "La date limite d'inscription doit être entre maintenant et le début de la sortie.",
+     * )
+     * @Assert\NotBlank(message="veuillez entrer la date limite d'inscription à la sortie")
+     * @Assert\Length(max=11)
      */
     private $dateLimiteInscription;
 
     /**
      * @ORM\Column(type="integer")
+     *  @Assert\Positive (message = "Le nombre de participants doit être positif.")
+     * @Assert\NotBlank(message="entrer le nombre max d'inscriptions autorisés")
      */
     private $nbInscriptionMax;
 
