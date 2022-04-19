@@ -1,12 +1,15 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
+    {{ form_start(afficherForm) }}
+<div class="container">
+    <div class="row mt-5">
+        <div class="col-6">{{ form_row(afficherForm.nom) }}</div>
+        <div class="col-6">{{ form_row(afficherForm.camps) }}</div>
+    </div>
+</div>
 
-{{ form_start(afficherForm) }}
-    {{ form_widget(afficherForm) }}
-    <button>Test</button>
-    {{ form_end() }}
-
+    {{ form_end(afficherForm) }}
 {% endblock %}
 
 {% block title %}
