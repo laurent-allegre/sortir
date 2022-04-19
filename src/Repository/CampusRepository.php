@@ -20,7 +20,6 @@ class CampusRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, Campus::class);
     }
-
     /**
      * @throws ORMException
      * @throws OptimisticLockException
