@@ -22,7 +22,7 @@ class Campus
 
     /**
      * @Assert\NotBlank(message="merci de donner un nom au campus")
-     * @Assert\Length(max255)
+     * @Assert\Length(max=255)
      * @ORM\Column(type="string", length=255)
      */
     private $nom;
