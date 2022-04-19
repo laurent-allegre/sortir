@@ -21,7 +21,7 @@ use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
  */
 class ProfilController extends AbstractController
 {
-
+  // TODO à enlever
   /* /**
      * @Route("/profil", name="app_profil")
      */
@@ -79,6 +79,7 @@ class ProfilController extends AbstractController
 
         ]);
     }
+    // Todo : à enlever
    /* /**
      * @Route("/update/{id}")
      */
