@@ -8,17 +8,31 @@
 
     </form>
     <div>
-        <tr>
-            <td>Nom de la sortie</td>
-            <td>Date de la sortie</td>
-            <td>Clôture</td>
-            <td>inscrits/places</td>
-            <td>Etat</td>
-            <td>Inscrit</td>
-            <td>Inscrit</td>
-            <td>Organisaeur</td>
-            <td>Actions</td>
-        </tr>
+    <table class="table table-striped">
+    <thead>
+    <tr>
+        <th scope="col">Nom de la sortie</th>
+        <th scope="col">Date de la sortie</th>
+        <th scope="col">Clôture</th>
+        <th scope="col">inscrits/places</th>
+        <th scope="col">Etat</th>
+        <th scope="col">Inscrit</th>
+        <th scope="col">Organisaeur</th>
+        <th scope="col">Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    {{ for sortie in sortie }}
+    <tr>
+        <th scope="row">1</th>
+        <td>{{ sortie.nom }}</td>
+        <td>{{ sortie.date }}</td>
+        <td>{{ sortie.date }}</td>
+    </tr>
+    {{ endfor }}
+
+    </tbody>
+    </table>
     </div>
 
 {% endblock %}
