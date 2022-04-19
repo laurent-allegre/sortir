@@ -22,12 +22,14 @@
     </tr>
     </thead>
     <tbody>
+    {% for sortie in sorties %}
     <tr>
-        <th scope="row">1</th>
+        <th scope="row"></th>
         <td>{{ sortie.nom }}</td>
-        <td>{{ sortie.date }}</td>
-        <td>{{ sortie.date }}</td>
+
+
     </tr>
+    {%  endfor %}
 
     </tbody>
     </table>
