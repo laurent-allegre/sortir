@@ -16,23 +16,30 @@ class SortirController extends AbstractController
 {
     /**
      * @Route("/sortie", name="sortie/creation")
+     * @Route("/sortie/{id}/modif", name="sortie/modif")
      */
-    public function create(Request $request, EntityManagerInterface $entityManager): Response
+    public function form(Sortie $sortie = null, Request $request, EntityManagerInterface $entityManager): Response
     {
+        if (!$sortie){
+            $sortie = new Sortie();
+        }
 
-       $sortie = new Sortie();
        $sortieForm = $this->createForm(SortieType::class, $sortie);
 
        $sortieForm->handleRequest($request);
        if ($sortieForm->isSubmitted() && $sortieForm->isValid()){
-           //organisateur
-           $sortie->setOrganise($this->getUser());
+           if (!$sortie->getId()){
+               //organisateur
+               $sortie->setOrganise($this->getUser());
+           }
+
            $entityManager->persist($sortie);
            $entityManager->flush();
        }
-
+            //TODO changer la route de sortie apres validation
         return $this->render('sortie.html.twig', [
-            'sortieForm' => $sortieForm->createView()
+            'sortieForm' => $sortieForm->createView(),
+            'editMode' => $sortie->getId() !== null
         ]);
     }
     /**
@@ -45,5 +52,7 @@ class SortirController extends AbstractController
 
         return $this->redirectToRoute('index');
     }
+
+
 
 }
