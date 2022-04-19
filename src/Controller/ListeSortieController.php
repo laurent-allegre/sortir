@@ -13,7 +13,7 @@ class ListeSortieController extends AbstractController
      */
     public function index(): Response
     {
-        return $this->render('liste_sortie/index.html.twig', [
+        return $this->render('liste_sortie/liste.html.twig', [
             'controller_name' => 'ListeSortieController',
         ]);
     }
