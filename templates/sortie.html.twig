@@ -1,21 +1,23 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h3 class="mt-2">
+    <h2 class="mt-2 text-center">
         {% if editMode %}
             Modifier la sortie
         {% else %}
             Bonjour! Veuillez créer une sortie
         {% endif %}
-        </h3>
+        </h2>
 
     {{ form_start(sortieForm) }}
     <div class="container">
         <div class="row mt-5">
             <div class="col-2">{{ form_label(sortieForm.nom,'Nom de la sortie:') }}</div>
             <div class="col-4">{{ form_widget(sortieForm.nom) }}</div>
+
             <div class="col-2">{{ form_label(sortieForm.camps,'Campus:') }}</div>
             <div class="col-4">{{ form_widget(sortieForm.camps) }}</div>
+
         </div>
         <div class="row mt-3">
             <div class="col-2">{{ form_label(sortieForm.dateHeureDebut,'Date et heure de la sortie:') }}</div>
@@ -60,7 +62,11 @@
                 {% endif %}
             </button>
             <button class="mt-5 btn btn-info btn-lg">Publier sortie</button>
-            <button class="mt-5 btn btn-danger btn-lg">Annuler sortie</button>
+            {% if editMode %}
+                <button class="mt-5 btn btn-danger btn-lg">Supprimer la sortie</button>
+            {% endif %}
+            <button class="mt-5 btn btn-warning btn-lg">Annuler</button>
+
         </div>
 
     </div>

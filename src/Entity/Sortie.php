@@ -46,14 +46,14 @@ class Sortie
     private $duree;
 
     /**
-     * @ORM\Column(type="datetime")
+     * @ORM\Column(type="date")
      * @Assert\Range(
      *      min = "now",
      *      maxPropertyPath="dateHeureDebut",
      *      notInRangeMessage = "La date limite d'inscription doit être entre maintenant et le début de la sortie.",
      * )
      * @Assert\NotBlank(message="veuillez entrer la date limite d'inscription à la sortie")
-     * @Assert\Length(max=11)
+     *
      */
     private $dateLimiteInscription;
 
