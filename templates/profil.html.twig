@@ -2,14 +2,49 @@
 
 {% block body %}
     <h1>Mon profil</h1>
+
     {{ form_start(profilForm)}}
+    <div class="container">
+            <div class="row mt-2">
+                <div class="col-2">{{ form_label(profilForm.pseudo) }}</div>
+                <div class="col-4">{{ form_widget(profilForm.pseudo) }}</div>
+            </div>
+            <div class="row mt-2">
+                    <div class="col-2">{{ form_label(profilForm.nom) }}</div>
+                    <div class="col-4">{{ form_widget(profilForm.nom) }}</div>
+            </div>
+            <div class="row mt-2">
+                        <div class="col-2">{{ form_label(profilForm.prenom) }}</div>
+                        <div class="col-4">{{ form_widget(profilForm.prenom) }}</div>
+            </div>
+            <div class="row mt-2">
+                <div class="col-2">{{ form_label(profilForm.telephone) }}</div>
+                <div class="col-4">{{ form_widget(profilForm.telephone) }}</div>
+            </div>
+            <div class="row mt-2">
+                <div class="col-2">{{ form_label(profilForm.email) }}</div>
+                <div class="col-4">{{ form_widget(profilForm.email) }}</div>
+            </div>
+            <div class="row mt-2">
+                <div class="col-2">{{ form_label(profilForm.plainPassword) }}</div>
+                <div class="col-4">{{ form_widget(profilForm.plainPassword) }}</div>
+            </div>
+            <div class="row mt-2">
+                <div class="col-2">Campus :</div>
+                <div class="col-4">{{ participant.campu.nom }}</div>
+            </div>
+            <div class="row mt-2">
+                <div class="col-2">{{ form_label(profilForm.avatar) }}</div>
+                <div class="col-4">{{ form_widget(profilForm.avatar) }}</div>
+            </div>
+        <div class="row mt-2">
+            <div class="col-2"> <button>Enregistrer</button></div>
+            <div class="col-4"><button>Annuler</button></div>
+        </div>
+            {{ form_end(profilForm)}}
 
-    {{ form_widget(profilForm) }}
-   <div> Campus : {{ participant.campu.nom }}</div>
+    </div>
 
-    <button>Enregistrer</button>
-    <button>Annuler</button>
-    {{ form_end(profilForm)}}
 
 
 {% endblock %}
