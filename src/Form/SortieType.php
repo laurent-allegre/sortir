@@ -51,16 +51,16 @@ class SortieType extends AbstractType
                 'class' => Ville::class,
                 'choice_label' => 'nom'
             ])
-            ->add('latitude', TextType::class,[
+        /*    ->add('latitude', EntityType::class,[
                 'mapped' => false,
-
-
+                'class' => Lieu::class,
+                'choice_label'=> 'latitude',
             ])
-            ->add('longitude', TextType::class,[
+            ->add('longitude', EntityType::class,[
                 'mapped' => false,
-
-
-            ])
+                'class' => Lieu::class,
+                'choice_label'=> 'longitude',
+            ]) */
 
           //  ->add('participants')
           // ->add('organise')
