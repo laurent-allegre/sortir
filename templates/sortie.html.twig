@@ -5,7 +5,7 @@
         {% if editMode %}
             Modifier la sortie
         {% else %}
-            Bonjour! Veuillez créer une sortie
+            Bonjour! {{ app.user.pseudo}} Veuillez créer une sortie
         {% endif %}
         </h2>
 
@@ -15,7 +15,12 @@
             <div class="col-2">{{ form_label(sortieForm.nom,'Nom de la sortie:') }}</div>
             <div class="col-4">{{ form_widget(sortieForm.nom) }}</div>
             <div class="col-2">{{ form_label(sortieForm.camps,'Campus:') }}</div>
-            <div class="col-4">{{ form_widget(sortieForm.camps) }}</div>
+
+            {% if editMode %}
+                <div class="col-4">{{ form_widget(sortieForm.camps) }}</div>
+            {% else %}
+                <div class="col-4">{{ app.user.campu}}</div>
+            {% endif %}
 
         </div>
         <div class="row mt-3">
@@ -45,12 +50,12 @@
             <div class="col-2">{{ form_label(sortieForm.etats,"Etats:") }}</div>
             <div class="col-4">{{ form_widget(sortieForm.etats) }}</div>
             <div class="col-2">{{ form_label(sortieForm.infosSortie,"Longitude:") }}</div>
-            <div class="col-4">{{ form_widget(sortieForm.longitude) }}</div>
+            <div class="col-4"></div>
         </div>
         <div class="row mt-2">
             <div class="col-6"></div>
             <div class="col-2">{{ form_label(sortieForm.infosSortie,"latitude:") }}</div>
-            <div class="col-4">{{ form_widget(sortieForm.latitude) }}</div>
+            <div class="col-4"></div>
         </div>
         <div class="text-center">
             <button class="mt-5 btn btn-success btn-lg">
