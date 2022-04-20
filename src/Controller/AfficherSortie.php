@@ -17,7 +17,7 @@ use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 class AfficherSortie extends AbstractController
 {
     /**
-     * @Route("afficheSortie/{id}", name="sortie_afficheSortie", requirements={"id":"\d+"})
+     * @Route("sortie/afficher/{id}", name="sortie_afficheSortie", requirements={"id":"\d+"})
      * @return Response
      */
     public function sortie(Sortie $sortie)
