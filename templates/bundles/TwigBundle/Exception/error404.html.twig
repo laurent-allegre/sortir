@@ -1,0 +1,9 @@
+{% extends 'base.html.twig' %}
+
+{% block tittle %}Error 404 - page not found {% endblock %}
+
+{% block body %}
+    <h1>Oups - Erreur 404 page non trouvée</h1>
+
+    <a href="{{ path('index') }}" title="index">Retour vers la page d'accueil</a>
+{% endblock %}

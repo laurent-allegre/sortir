@@ -1,0 +1,9 @@
+{% extends 'base.html.twig' %}
+
+{% block tittle %}Error 500 - Server Error {% endblock %}
+
+{% block body %}
+    <h1>Erreur 500 le site web n'arrive pas à afficher cette page !</h1>
+    <p>essayez de contacter le propriétaire du site internet ou </p>
+    <a href="{{ path('index') }}" title="index">Revenir vers la page d'accueil</a>
+{% endblock %}
