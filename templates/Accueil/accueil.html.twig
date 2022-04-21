@@ -30,7 +30,9 @@
         <td>{{ sortie.nbInscriptionMax }}</td>
         <td>{{ sortie.etats.libelle }}</td>
 
-        <td>{% if app.user.id == sortie.organise.id %} X {% endif %}</td>
+        <td>{% for inscrit in sortie.participants %}
+                        X
+            {% endfor %}</td>
 
         <td>{%  if app.user.id == sortie.organise.id %}{{ sortie.organise.nom }}
             {% else %}

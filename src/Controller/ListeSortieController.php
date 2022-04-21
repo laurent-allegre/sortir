@@ -5,7 +5,9 @@ namespace App\Controller;
 
 use App\Entity\Participant;
 use App\Entity\Sortie;
+use App\Repository\ParticipantRepository;
 use App\Repository\SortieRepository;
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -19,10 +21,9 @@ class ListeSortieController extends AbstractController
     /**
      * @Route("/", name="")
      */
-    public function index(SortieRepository $sortieRepository): Response
+    public function index(SortieRepository $sortieRepository,ParticipantRepository $participantRepository): Response
     {
         $sorties = $sortieRepository->findAll();
-
         return $this->render('Accueil/accueil.html.twig', [
             'controller_name' => 'ListeSortieController',
             'sorties'=>$sorties,
@@ -41,19 +42,19 @@ class ListeSortieController extends AbstractController
         /**
          * @var Participant $participant
          */
+
         $participant = $this->getUser();
         $sortie->addParticipant($participant);
 
         $manager->persist($sortie);
         $manager->flush();
 
-        //$this->addFlash('result', $message);
 
         return $this->redirectToRoute('accueil');
     }
 
     /**
-     * @Route("/{id}", name="desister", requirements={"id":"\d+"})
+     * @Route("/remove/{id}", name="desister", requirements={"id":"\d+"})
      */
     public function desister(Sortie $sortie, EntityManagerInterface $manager)
     {
@@ -62,8 +63,8 @@ class ListeSortieController extends AbstractController
          */
         $participant = $this->getUser();
         $sortie->removeParticipant($participant);
-
-        $manager->persist($sortie);
         $manager->flush();
+
+        return $this->redirectToRoute('accueil');
     }
 }
