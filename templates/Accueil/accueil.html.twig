@@ -3,8 +3,12 @@
 {% block title %}{% endblock %}
 
 {% block body %}
-    <h2 class="mt-2 text-center">Filtrer sortie</h2>
+    <div class="infcnx">Date du jour : {{"now"|date('d/m/Y H:i')}}</div>
+    <div class="infcnx">Participant : {{app.user.prenom}} {{app.user.nom|upper}}</div>
+
     <form>
+        <h4 class="mt-2 text-center">Filtrer sortie</h4>
+
 
     </form>
     <div>
