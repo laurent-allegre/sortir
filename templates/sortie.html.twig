@@ -10,16 +10,17 @@
         </h2>
 
     {{ form_start(sortieForm) }}
+
     <div class="container">
         <div class="row mt-5">
             <div class="col-2">{{ form_label(sortieForm.nom,'Nom de la sortie:') }}</div>
             <div class="col-4">{{ form_widget(sortieForm.nom) }}</div>
-            <div class="col-2">{{ form_label(sortieForm.camps,'Campus:') }}</div>
+            <div class="col-2">Campus : </div>
 
             {% if editMode %}
-                <div class="col-4">{{ form_widget(sortieForm.camps) }}</div>
+                <div class="col-4">{{ app.user.campu }}</div>
             {% else %}
-                <div class="col-4">{{ app.user.campu}}</div>
+                <div class="col-4">{{ app.user.campu}} </div>
             {% endif %}
 
         </div>
