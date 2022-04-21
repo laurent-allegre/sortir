@@ -37,8 +37,10 @@
             <a href="{{ path ('app_show', {"id" : sortie.organise.id})  }}" title="Détail">{{ sortie.organise.nom }}</a>
             {% endif %}
         </td>
-        <td><a href="{{ path('sortie/afficher',{"id" : sortie.id}) }}" title="afficher">Afficher</a>
-            <a href="{{ path('inscrire',{"id" : sortie.id}) }}" title="s'inscrire">S'inscrire</a>
+        <td><a href="{{ path('sortie_afficheSortie',{"id" : sortie.id}) }}" title="afficher">Afficher</a>
+
+            <a href="{{ path('accueildesister',{"id" : sortie.id}) }}" title="desister">Se désister</a>
+            <a href="{{ path('accueilinscrire',{"id" : sortie.id}) }}" title="s'inscrire">S'inscrire</a>
             {% if app.user.id == sortie.organise.id %}
                 <a href="{{ path('sortie/modif',{"id" : sortie.id}) }}" title="modifier">Modifier</a>
                 <a href="{{ path('sortie/modif',{"id" : sortie.id}) }}" title="annuler">Annuler</a>
@@ -46,8 +48,6 @@
 
             {% endif %}
         </td>
-
-
 
     </tr>
     {%  endfor %}
