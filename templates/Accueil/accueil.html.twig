@@ -40,8 +40,13 @@
             {% endif %}
         </td>
         <td><a href="{{ path('sortie_afficheSortie',{"id" : sortie.id}) }}" title="afficher">Afficher</a> <br>
+
+            {% for inscrit in sortie.participants %}
             <a href="{{ path('accueildesister',{"id" : sortie.id}) }}" title="desister">Se désister</a><br>
-            <a href="{{ path('accueilinscrire',{"id" : sortie.id}) }}" title="s'inscrire">S'inscrire</a>
+            {% else %}
+                <a href="{{ path('accueilinscrire',{"id" : sortie.id}) }}" title="s'inscrire">S'inscrire</a>
+            {% endfor %}
+
             {% if app.user.id == sortie.organise.id %}
                 <a href="{{ path('sortie/modif',{"id" : sortie.id}) }}" title="modifier">Modifier</a> <br>
                 <a href="{{ path('sortie/modif',{"id" : sortie.id}) }}" title="annuler">Annuler</a> <br>
