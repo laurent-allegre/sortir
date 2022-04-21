@@ -6,6 +6,8 @@ namespace App\Controller;
 
 use App\Entity\Sortie;
 use App\Form\SortieType;
+use App\Repository\CampusRepository;
+use App\Repository\LieuRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -18,8 +20,9 @@ class SortirController extends AbstractController
      * @Route("/sortie", name="sortie/creation")
      * @Route("/sortie/{id}/modif", name="sortie/modif")
      */
-    public function form(Sortie $sortie = null, Request $request, EntityManagerInterface $entityManager): Response
+    public function form(Sortie $sortie = null, Request $request, EntityManagerInterface $entityManager, CampusRepository $campusRepository, LieuRepository $lieuRepository): Response
     {
+
         if (!$sortie){
             $sortie = new Sortie();
         }
@@ -31,6 +34,8 @@ class SortirController extends AbstractController
 
                //organisateur
                $sortie->setOrganise($this->getUser());
+               //campus
+               $sortie->setCamps($this->getUser()->getCampu());
 
 
 

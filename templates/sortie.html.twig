@@ -38,6 +38,8 @@
         <div class="row mt-3">
             <div class="col-2">{{ form_label(sortieForm.nbInscriptionMax,"Nombre de places:") }}</div>
             <div class="col-4">{{ form_widget(sortieForm.nbInscriptionMax) }}</div>
+            <div class="col-2">Rue :</div>
+            <div class="col-4"></div>
             <div class="col-6"></div>
         </div>
         <div class="row mt-3">
@@ -57,21 +59,20 @@
             <div class="col-2">{{ form_label(sortieForm.infosSortie,"latitude:") }}</div>
             <div class="col-4"></div>
         </div>
-        <div class="text-center">
-            <button class="mt-5 btn btn-success btn-lg">
+            <div class="text-center">
+                <button class="mt-5 btn btn-success btn-lg">
+                    {% if editMode %}
+                        Modifier
+                    {% else %}
+                        Nouvelle sortie
+                    {% endif %}
+                </button>
+                <button class="mt-5 btn btn-info btn-lg">Publier sortie</button>
                 {% if editMode %}
-                    Modifier
-                {% else %}
-                    Nouvelle sortie
+                    <button class="mt-5 btn btn-danger btn-lg">Supprimer la sortie</button>
                 {% endif %}
-            </button>
-            <button class="mt-5 btn btn-info btn-lg">Publier sortie</button>
-            {% if editMode %}
-                <button class="mt-5 btn btn-danger btn-lg">Supprimer la sortie</button>
-            {% endif %}
-            <button class="mt-5 btn btn-warning btn-lg">Annuler</button>
-
-        </div>
+                <button class="mt-5 btn btn-warning btn-lg">Annuler</button>
+            </div>
 
     </div>
 
