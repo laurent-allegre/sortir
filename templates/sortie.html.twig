@@ -38,9 +38,14 @@
         <div class="row mt-3">
             <div class="col-2">{{ form_label(sortieForm.nbInscriptionMax,"Nombre de places:") }}</div>
             <div class="col-4">{{ form_widget(sortieForm.nbInscriptionMax) }}</div>
-            <div class="col-2">Rue :</div>
-            <div class="col-4"></div>
-            <div class="col-6"></div>
+            <div class="col-2">Rue : <br> Code Postal :</div>
+            {% if editMode %}
+            <div class="col-4">{{sortie.lieux.rue}} <br> {{sortie.lieux.ville.codePostal}}</div>
+             {{sortie.lieux.ville.codePostal}}
+            {% else %}
+                <div class="col-4"></div>
+            {% endif %}
+
         </div>
         <div class="row mt-3">
             <div class="col-2">{{ form_label(sortieForm.infosSortie,"Description et infos:") }}</div>
@@ -73,6 +78,8 @@
                 {% endif %}
                 <button class="mt-5 btn btn-warning btn-lg">Annuler</button>
             </div>
+
+
 
     </div>
 
