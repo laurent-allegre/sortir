@@ -25,9 +25,9 @@
     {% for sortie in sorties %}
     <tr>
         <td>{{ sortie.nom }}</td>
-        <td>{{ sortie.dateHeureDebut | date("Y-m-d h:m") }}</td>
-        <td>{{ sortie.dateLimiteInscription | date("Y-m-d")}}</td>
-        <td>{{ sortie.nbInscriptionMax }}</td>
+        <td>{{ sortie.dateHeureDebut | date("d/m/Y h:m") }}</td>
+        <td>{{ sortie.dateLimiteInscription | date("d/m/Y")}}</td>
+        <td>{{ sortie.participants|length }} / {{ sortie.nbInscriptionMax }}</td>
         <td>{{ sortie.etats.libelle }}</td>
 
         <td>{% for inscrit in sortie.participants %}
@@ -39,15 +39,13 @@
             <a href="{{ path ('app_show', {"id" : sortie.organise.id})  }}" title="Détail">{{ sortie.organise.nom }}</a>
             {% endif %}
         </td>
-        <td><a href="{{ path('sortie_afficheSortie',{"id" : sortie.id}) }}" title="afficher">Afficher</a>
-
-            <a href="{{ path('accueildesister',{"id" : sortie.id}) }}" title="desister">Se désister</a>
+        <td><a href="{{ path('sortie_afficheSortie',{"id" : sortie.id}) }}" title="afficher">Afficher</a> <br>
+            <a href="{{ path('accueildesister',{"id" : sortie.id}) }}" title="desister">Se désister</a><br>
             <a href="{{ path('accueilinscrire',{"id" : sortie.id}) }}" title="s'inscrire">S'inscrire</a>
             {% if app.user.id == sortie.organise.id %}
-                <a href="{{ path('sortie/modif',{"id" : sortie.id}) }}" title="modifier">Modifier</a>
-                <a href="{{ path('sortie/modif',{"id" : sortie.id}) }}" title="annuler">Annuler</a>
+                <a href="{{ path('sortie/modif',{"id" : sortie.id}) }}" title="modifier">Modifier</a> <br>
+                <a href="{{ path('sortie/modif',{"id" : sortie.id}) }}" title="annuler">Annuler</a> <br>
                 <a href="{{ path('sortie/modif',{"id" : sortie.id}) }}" title="publier">Publier</a>
-
             {% endif %}
         </td>
 
