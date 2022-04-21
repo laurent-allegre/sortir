@@ -1,18 +1,61 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    {{ form_start(afficherForm) }}
 <div class="container">
-    <div class="row mt-5">
-        <div class="col-6">{{ form_row(afficherForm.nom) }}</div>
-        <div class="col-6">{{ form_row(afficherForm.camps) }}</div>
-    </div>
-</div>
 
-    {{ form_end(afficherForm) }}
+    <div class="row mt-5">
+        <div class="col-3">Nom de la sortie:</div>
+        <div class="col-3">{{sortie.nom}}</div>
+         <div class="col-3">Campus:</div>
+        <div class="col-3">{{sortie.camps}}</div>
+    </div>
+
+
+    <div class="row mt-3">
+        <div class="col-3">Date et heure de sortie:</div>
+        <div class="col-3">{{sortie.dateHeureDebut|date("d/m/Y à H:i")}}</div>
+        <div class="col-3">Lieu:</div>
+        <div class="col-3">{{sortie.lieux.nom}}</div>
+    </div>
+
+
+    <div class="row mt-3">
+        <div class="col-3 ">Date limite d'inscription:</div>
+        <div class="col-3">{{sortie.dateHeureDebut|date("d/m/Y")}}</div>
+        <div class="col-3">Rue:</div>
+        <div class="col-3">{{sortie.lieux.rue}}</div>
+    </div>
+
+
+    <div class="row mt-3">
+        <div class="col-3">Nombre de places:</div>
+        <div class="col-3">{{sortie.nbInscriptionMax}}</div>
+        <div class="col-3">Code postal:</div>
+        <div class="col-3">{{sortie.lieux.ville.codePostal}}</div>
+    </div>
+
+
+    <div class="row mt-3">
+        <div class="col-3">Durée:</div>
+        <div class="col-3">{{sortie.duree}}</div>
+        <div class="col-3">Latitude:</div>
+        <div class="col-3">{{sortie.lieux.latitude}}</div>
+    </div>
+
+
+    <div class="row mt-3">
+        <div class="col-3">Description et infos:</div>
+        <div class="col-3">{{sortie.infosSortie}}</div>
+        <div class="col-4">Longitude:</div>
+        <div class="col-4">{{sortie.lieux.longitude}}</div>
+    </div>
+
+</div>
 {% endblock %}
 
 {% block title %}
 
 {% endblock %}
+
+
 

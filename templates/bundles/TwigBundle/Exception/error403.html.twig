@@ -1,0 +1,9 @@
+{% extends 'base.html.twig' %}
+
+{% block tittle %}Error 403 - accés interdit {% endblock %}
+
+{% block body %}
+    <h1>Erreur 403 accés interdit</h1>
+
+    <a href="{{ path('index') }}" title="index">Retour vers la page d'accueil</a>
+{% endblock %}

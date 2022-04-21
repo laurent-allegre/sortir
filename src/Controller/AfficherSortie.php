@@ -2,37 +2,29 @@
 
 namespace App\Controller;
 
+use App\Entity\Participant;
 use App\Entity\Sortie;
-use App\Form\AfficherSortiePhpType;
-use App\Form\SortieType;
+use App\Entity\Lieu;
+use App\Repository\CampusRepository;
+use App\Repository\ParticipantRepository;
 use Doctrine\ORM\EntityManagerInterface;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-
+use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 
 class AfficherSortie extends AbstractController
 {
-/**
- * @Route("/affichersortie", name="sortie/afficher")
- */
-
-public function create(Request $request, EntityManagerInterface $entityManager): Response
-{
-    $afficher = new Sortie();
-    $afficherForm = $this->createForm(AfficherSortiePhpType::class, $afficher);
-    $afficherForm->handleRequest($request);
-
-    if ($afficherForm->isSubmitted() && $afficherForm->isValid()){
-        $entityManager->persist($afficher);
-        $entityManager->flush();
+    /**
+     * @Route("sortie/afficher/{id}", name="sortie_afficheSortie", requirements={"id":"\d+"})
+     * @return Response
+     */
+    public function sortie(Sortie $sortie)
+    {
+        return $this->render('AfficherSortie.html.twig', [
+            "sortie" => $sortie
+        ]);
     }
-    return $this->render('AfficherSortie.html.twig', [
-        'afficherForm' => $afficherForm->createView()
 
-    ]);
-
-}
 }
