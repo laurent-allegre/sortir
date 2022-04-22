@@ -18,12 +18,18 @@ class AfficherSortie extends AbstractController
 {
     /**
      * @Route("sortie/afficher/{id}", name="sortie_afficheSortie", requirements={"id":"\d+"})
+     *
      * @return Response
      */
     public function sortie(Sortie $sortie)
     {
+        /**
+         * @var Participant $participant
+         */
+        $participant = $this->getUser();
         return $this->render('AfficherSortie.html.twig', [
-            "sortie" => $sortie
+            "sortie" => $sortie,
+            "participant" => $participant
         ]);
     }
 
