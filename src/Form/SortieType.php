@@ -38,6 +38,7 @@ class SortieType extends AbstractType
                 'choice_label'=> 'nom',
             ])
             ->add('etats', EntityType::class,[
+                'disabled' => true,
                 'class' => Etat::class,
                 'choice_label' => 'libelle'
             ])
