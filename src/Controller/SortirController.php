@@ -42,7 +42,7 @@ class SortirController extends AbstractController
            $entityManager->flush();
 
            //s'affiche sur la page d'acceuil
-           //  $this->addFlash('success', "La sortie a été créée");
+
            return $this->redirectToRoute('accueil');
        }
             //TODO changer la route de sortie apres validation

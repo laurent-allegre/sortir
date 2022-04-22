@@ -65,8 +65,7 @@ class SortieType extends AbstractType
                 'choice_label'=> 'longitude',
             ]) */
 
-          //  ->add('participants')
-          // ->add('organise')
+
 
         ;
     }
