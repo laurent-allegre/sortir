@@ -48,7 +48,6 @@
             <div class="col-2">Rue : <br> Code Postal :</div>
             {% if editMode %}
             <div class="col-4">{{sortie.lieux.rue}} <br> {{sortie.lieux.ville.codePostal}}</div>
-             {{sortie.lieux.ville.codePostal}}
             {% else %}
                 <div class="col-4"></div>
             {% endif %}
@@ -61,8 +60,7 @@
             <div class="col-4">{{ form_widget(sortieForm.duree) }}</div>
         </div>
         <div class="row mt-2">
-            <div class="col-2">{{ form_label(sortieForm.etats,"Etats:") }}</div>
-            <div class="col-4">{{ form_widget(sortieForm.etats) }}</div>
+            <div class="col-6"></div>
             <div class="col-2">{{ form_label(sortieForm.infosSortie,"Longitude:") }}</div>
             <div class="col-4"></div>
         </div>
@@ -83,7 +81,7 @@
                 {% if editMode %}
                     <button class="mt-5 btn btn-danger btn-lg">Supprimer la sortie</button>
                 {% endif %}
-                <button class="mt-5 btn btn-warning btn-lg">Annuler</button>
+                <a href="{{ path('accueil') }}" class="mt-5 btn btn-warning btn-lg" type="reset">Annuler</a>
             </div>
 
 

@@ -37,11 +37,11 @@ class SortieType extends AbstractType
                 'class' => Lieu::class,
                 'choice_label'=> 'nom',
             ])
-            ->add('etats', EntityType::class,[
-                'disabled' => true,
+        /*    ->add('etats', EntityType::class,[
+
                 'class' => Etat::class,
                 'choice_label' => 'libelle'
-            ])
+            ]) */
         /*    ->add('camps',EntityType::class,[
 
                 'label' => 'Campus',

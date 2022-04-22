@@ -7,6 +7,7 @@ namespace App\Controller;
 use App\Entity\Sortie;
 use App\Form\SortieType;
 use App\Repository\CampusRepository;
+use App\Repository\EtatRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -19,7 +20,7 @@ class SortirController extends AbstractController
      * @Route("/sortie", name="sortie/creation")
      * @Route("/sortie/{id}/modif", name="sortie/modif")
      */
-    public function form(Sortie $sortie = null, Request $request, EntityManagerInterface $entityManager, CampusRepository $campusRepository): Response
+    public function form(Sortie $sortie = null, Request $request, EntityManagerInterface $entityManager, CampusRepository $campusRepository, EtatRepository $etatRepository): Response
     {
         if (!$sortie){
             $sortie = new Sortie();
@@ -33,9 +34,16 @@ class SortirController extends AbstractController
             $sortie->setOrganise($this->getUser());
             //campus
             $sortie->setCamps($this->getUser()->getCampu());
+           //etat
+           $etatCreee = $etatRepository->findOneBy(array('libelle' => 'Créée'));
+           $sortie->setEtats($etatCreee);
 
            $entityManager->persist($sortie);
            $entityManager->flush();
+
+           //s'affiche sur la page d'acceuil
+           //  $this->addFlash('success', "La sortie a été créée");
+           return $this->redirectToRoute('accueil');
        }
             //TODO changer la route de sortie apres validation
         return $this->render('sortie.html.twig', [
