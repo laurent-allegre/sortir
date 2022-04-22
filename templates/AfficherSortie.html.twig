@@ -53,25 +53,24 @@
 </div>
 
     <div class="listParticipantContainer">
-        <h3>Liste des particpants</h3>
+        <h3 class="mt-5">Liste des participants</h3>
         {% if sortie.participants| length == 0 %}
-            <p>Il n'y a aucun participants !</p>
+            <p class="mt-5">Il n'y a aucun participants !</p>
         {% else %}
             <table class ="listParticipant">
 
-                <tr><th>Pseudo</th> <th>Nom</th></tr>
+                <thead>
+                <tr> <th class="p-3">Pseudo</th><th class="p-3">Nom</th></tr>
 
                 {% for participant in sortie.participants %}
-                    <tr class="ligneListParticipant">
-                        <td>
-                            <a>
-                                {{ participant.pseudo }}
-                            </a>
-                        </td>
-                        <td>
-                            {{ participant.prenom }} {{ participant.nom }}
-                        </td>
-                    </tr>
+                    <tbody>
+                        <tr class="ligneListParticipant">
+                            <td class="p-3">  {{ participant.pseudo }} </td>
+                            <td class="p-3"> {{ participant.prenom }} {{ participant.nom }}  </td>
+                        </tr>
+                    </tbody>
+
+
                 {% endfor %}
             </table>
         {% endif %}

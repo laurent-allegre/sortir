@@ -45,12 +45,12 @@ class SortirController extends AbstractController
 
            return $this->redirectToRoute('accueil');
        }
-            //TODO changer la route de sortie apres validation
-        return $this->render('sortie.html.twig', [
-            'sortieForm' => $sortieForm->createView(),
-            'sortie' => $sortie,
-            'editMode' => $sortie->getId() !== null
-        ]);
+
+            return $this->render('sortie.html.twig', [
+                'sortieForm' => $sortieForm->createView(),
+                'sortie' => $sortie,
+                'editMode' => $sortie->getId() !== null
+            ]);
     }
 
 
