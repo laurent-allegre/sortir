@@ -40,7 +40,7 @@ class ListeSortieController extends AbstractController
       public function inscription(Sortie $sortie, EntityManagerInterface $manager)
     {
         //--- insertion du user dans la table sortie ---
-
+        //**********
         //récupération du user connecté
         /**
          * @var Participant $participant
