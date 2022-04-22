@@ -1,16 +1,14 @@
 <?php
-
-
 namespace App\Search;
 
 
 use App\Entity\Campus;
 
-class PropertySearch
+class SortiesSearch
 {
 
     /**
-     * @var Campus[]
+     * @var string
      */
     public $campus = [];
 
