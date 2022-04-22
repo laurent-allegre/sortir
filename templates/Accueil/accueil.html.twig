@@ -8,61 +8,60 @@
 
     <form>
         <h4 class="mt-2 text-center">Filtrer sortie</h4>
-
-
     </form>
-    <div>
-    <table class="table table-striped table-bordered border-dark">
-    <thead>
-    <tr>
-        <th scope="col">Nom de la sortie</th>
-        <th scope="col">Date de la sortie</th>
-        <th scope="col">Clôture</th>
-        <th scope="col">inscrits/places</th>
-        <th scope="col">Etat</th>
-        <th scope="col">Inscrit</th>
-        <th scope="col">Organisaeur</th>
-        <th scope="col">Actions</th>
-    </tr>
-    </thead>
-    <tbody>
-    {% for sortie in sorties %}
-    <tr>
-        <td>{{ sortie.nom }}</td>
-        <td>{{ sortie.dateHeureDebut | date("d/m/Y h:m") }}</td>
-        <td>{{ sortie.dateLimiteInscription | date("d/m/Y")}}</td>
-        <td>{{ sortie.participants|length }} / {{ sortie.nbInscriptionMax }}</td>
-        <td>{{ sortie.etats.libelle }}</td>
+    <div class="container-fluid">
+        <table class="table table-striped table-bordered border-dark">
+                <thead>
+                <tr>
+                    <th scope="col">Nom de la sortie</th>
+                    <th scope="col">Date de la sortie</th>
+                    <th scope="col">Clôture</th>
+                    <th scope="col">inscrits/places</th>
+                    <th scope="col">Etat</th>
+                    <th scope="col">Inscrit</th>
+                    <th scope="col">Organisaeur</th>
+                    <th scope="col">Actions</th>
+                </tr>
+                </thead>
+            <tbody>
+                {% for sortie in sorties %}
+                <tr>
+                    <td>{{ sortie.nom }}</td>
+                    <td>{{ sortie.dateHeureDebut | date("d/m/Y h:m") }}</td>
+                    <td>{{ sortie.dateLimiteInscription | date("d/m/Y")}}</td>
+                    <td>{{ sortie.participants|length }} / {{ sortie.nbInscriptionMax }}</td>
+                    <td>{{ sortie.etats.libelle }}</td>
 
-        <td>{% for inscrit in sortie.participants %}
-                        X
-            {% endfor %}</td>
+                    <td>{% for inscrit in sortie.participants %}
+                                    X
+                        {% endfor %}</td>
 
-        <td>{%  if app.user.id == sortie.organise.id %}{{ sortie.organise.nom }}
-            {% else %}
-            <a href="{{ path ('app_show', {"id" : sortie.organise.id})  }}" title="Détail">{{ sortie.organise.nom }}</a>
-            {% endif %}
-        </td>
-        <td><a href="{{ path('sortie_afficheSortie',{"id" : sortie.id}) }}" title="afficher">Afficher</a> <br>
+                    <td>{%  if app.user.id == sortie.organise.id %}{{ sortie.organise.nom }}
+                        {% else %}
+                        <a href="{{ path ('app_show', {"id" : sortie.organise.id})  }}" title="Détail">{{ sortie.organise.nom }}</a>
+                        {% endif %}
+                    </td>
+                    <td><a href="{{ path('sortie_afficheSortie',{"id" : sortie.id}) }}" title="afficher">Afficher</a> <br>
 
-            {% for inscrit in sortie.participants %}
-            <a href="{{ path('accueildesister',{"id" : sortie.id}) }}" title="desister">Se désister</a><br>
-            {% else %}
-                <a href="{{ path('accueilinscrire',{"id" : sortie.id}) }}" title="s'inscrire">S'inscrire</a>
-            {% endfor %}
+                        {% for inscrit in sortie.participants %}
+                        <a href="{{ path('accueildesister',{"id" : sortie.id}) }}" title="desister">Se désister</a><br>
+                        {% else %}
+                            <a href="{{ path('accueilinscrire',{"id" : sortie.id}) }}" title="s'inscrire">S'inscrire</a>
+                        {% endfor %}
 
-            {% if app.user.id == sortie.organise.id %}
-                <a href="{{ path('sortie/modif',{"id" : sortie.id}) }}" title="modifier">Modifier</a> <br>
-                <a href="{{ path('sortie/modif',{"id" : sortie.id}) }}" title="annuler">Annuler</a> <br>
-                <a href="{{ path('sortie/modif',{"id" : sortie.id}) }}" title="publier">Publier</a>
-            {% endif %}
-        </td>
+                        {% if app.user.id == sortie.organise.id %}
+                            <a href="{{ path('sortie/modif',{"id" : sortie.id}) }}" title="modifier">Modifier</a> <br>
+                            <a href="{{ path('sortie/modif',{"id" : sortie.id}) }}" title="annuler">Annuler</a> <br>
+                            <a href="{{ path('sortie/modif',{"id" : sortie.id}) }}" title="publier">Publier</a>
+                        {% endif %}
+                    </td>
 
-    </tr>
-    {%  endfor %}
+                </tr>
 
-    </tbody>
-    </table>
+                {%  endfor %}
+
+            </tbody>
+        </table>
     </div>
 
 {% endblock %}
