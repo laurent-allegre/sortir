@@ -21,12 +21,15 @@ class ListeSortieController extends AbstractController
     /**
      * @Route("/", name="")
      */
-    public function index(SortieRepository $sortieRepository,ParticipantRepository $participantRepository): Response
+    public function index(SortieRepository $sortieRepository): Response
     {
+        $participant=$this->getUser();
         $sorties = $sortieRepository->findAll();
         return $this->render('Accueil/accueil.html.twig', [
             'controller_name' => 'ListeSortieController',
             'sorties'=>$sorties,
+            'participant'=>$participant,
+
         ]);
     }
 

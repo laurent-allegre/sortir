@@ -24,6 +24,7 @@
                 </tr>
                 </thead>
             <tbody>
+
                 {% for sortie in sorties %}
                 <tr>
                     <td>{{ sortie.nom }}</td>
@@ -32,9 +33,17 @@
                     <td>{{ sortie.participants|length }} / {{ sortie.nbInscriptionMax }}</td>
                     <td>{{ sortie.etats.libelle }}</td>
 
-                    <td>{% for inscrit in sortie.participants %}
+                    <td>
+                        {% for participant in sortie.participants %}
+                        {% if app.user.id == participant.id %}
+
                                     X
-                        {% endfor %}</td>
+
+                        {% endif %}
+                        {% endfor %}
+
+
+                    </td>
 
                     <td>{%  if app.user.id == sortie.organise.id %}{{ sortie.organise.nom }}
                         {% else %}
@@ -43,11 +52,17 @@
                     </td>
                     <td><a href="{{ path('sortie_afficheSortie',{"id" : sortie.id}) }}" title="afficher">Afficher</a> <br>
 
-                        {% for inscrit in sortie.participants %}
+
+                        {% for participant in sortie.participants %}
+                            {% if app.user.id == participant.id %}
                         <a href="{{ path('accueildesister',{"id" : sortie.id}) }}" title="desister">Se désister</a><br>
+                            {% endif %}
                         {% else %}
                             <a href="{{ path('accueilinscrire',{"id" : sortie.id}) }}" title="s'inscrire">S'inscrire</a>
+
                         {% endfor %}
+
+
 
                         {% if app.user.id == sortie.organise.id %}
                             <a href="{{ path('sortie/modif',{"id" : sortie.id}) }}" title="modifier">Modifier</a> <br>
@@ -59,6 +74,7 @@
                 </tr>
 
                 {%  endfor %}
+
 
             </tbody>
         </table>

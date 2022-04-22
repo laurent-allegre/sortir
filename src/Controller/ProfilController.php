@@ -3,16 +3,15 @@
 namespace App\Controller;
 
 
-use App\Entity\Participant;
+
 use App\Form\ProfilType;
-use App\Repository\CampusRepository;
 use App\Repository\ParticipantRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
+
 
 
 
@@ -21,28 +20,7 @@ use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
  */
 class ProfilController extends AbstractController
 {
-  // TODO à enlever
-  /* /**
-     * @Route("/profil", name="app_profil")
-     */
-  /* public function create(Request $request, EntityManagerInterface $entityManager): Response
-    {
-        $participant = new Participant();
-        $participant->setAdministrateur(false);
-        $participant->setActif(true);
 
-        $profilForm = $this->createForm(ProfilType::class, $participant);
-        $profilForm->handleRequest($request);
-
-        if ($profilForm->isSubmitted()) {
-            $entityManager->persist($participant);
-            $entityManager->flush();
-            return $this->redirectToRoute('app_profil_update', ['id' => $participant->getId()]);
-        }
-        return $this->render('profil.html.twig', [
-            'profilForm' => $profilForm->createView()
-        ]);
-    } */
     /**
      * @Route("/", name="app_profil", methods={"GET", "POST"})
      */
@@ -79,28 +57,5 @@ class ProfilController extends AbstractController
 
         ]);
     }
-    // Todo : à enlever
-   /* /**
-     * @Route("/update/{id}")
-     */
-  /*  public function update(ManagerRegistry $doctrine, int $id): Response
-    {
-        $entityManager = $doctrine->getManager();
-        $participant = $entityManager->getRepository(ParticipantRepository::class)->find($id);
 
-
-
-        if (!$participant) {
-            throw $this->createNotFoundException(
-                'No user found for id '.$id
-            );
-        }
-
-        $participant->setPseudo('New product name!');
-        $entityManager->flush();
-
-        return $this->redirectToRoute('app_show', [
-            'id' => $participant->getId()
-        ]);
-    }*/
 }
