@@ -53,14 +53,18 @@
                     <td><a href="{{ path('sortie_afficheSortie',{"id" : sortie.id}) }}" title="afficher">Afficher</a> <br>
 
 
-                        {% for participant in sortie.participants %}
-                            {% if app.user.id == participant.id %}
-                        <a href="{{ path('accueildesister',{"id" : sortie.id}) }}" title="desister">Se désister</a><br>
-                            {% endif %}
+                        {% if sortie.participants.contains(participant) %}
+                            <a href="{{ path('accueildesister',{"id" : sortie.id}) }}" title="desister">Se désister</a><br>
+
                         {% else %}
                             <a href="{{ path('accueilinscrire',{"id" : sortie.id}) }}" title="s'inscrire">S'inscrire</a>
 
-                        {% endfor %}
+
+
+                        {% endif %}
+
+
+
 
 
 
