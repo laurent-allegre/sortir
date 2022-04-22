@@ -24,6 +24,9 @@ class ListeSortieController extends AbstractController
     public function index(SortieRepository $sortieRepository): Response
     {
         $participant=$this->getUser();
+        // $search = new SortiesSearch();
+        // $sortiesSearchForm = $this->createForm(SortiesSearchType::class, $search);
+        // $sortiesSearchForm->handlerequest($request);
         $sorties = $sortieRepository->findAll();
         return $this->render('Accueil/accueil.html.twig', [
             'controller_name' => 'ListeSortieController',
